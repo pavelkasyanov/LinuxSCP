@@ -3,7 +3,9 @@ QT -= gui
 TEMPLATE = lib
 DEFINES += LINUXSCP_CORE_LIBRARY
 
-CONFIG += c++11
+CONFIG += c++17
+
+TARGET = LinuxSCPCore
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -16,10 +18,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES +=
+SOURCES += \
+    file_system_viewer/local_file_system_viewer.cpp
 
 HEADERS += \
-    LinuxSCP_core_global.h
+    LinuxSCP_core_global.h \
+    file_system_viewer/i_file_system_viewer.h \
+    file_system_viewer/local_file_system_viewer.h \
+    singleton.h
 
 # Default rules for deployment.
 unix {

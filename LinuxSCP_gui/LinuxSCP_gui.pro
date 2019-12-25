@@ -2,7 +2,13 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
+
+TARGET = LinuxSCP
+
+DEPENDPATH += . ../LinuxSCP_core
+INCLUDEPATH += ../LinuxSCP_core
+LIBS += -L../LinuxSCP_core -lLinuxSCPCore
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -16,16 +22,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    app_config.cpp \
     main.cpp \
     main_window.cpp
 
 HEADERS += \
+    app_config.h \
     main_window.h
 
 FORMS += \
     main_window.ui
 
+TRANSLATIONS = language/local_ru.ts \
+               language/local_en.ts
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    language/local_en.ts \
+    language/local_ru.ts

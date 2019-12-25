@@ -13,9 +13,23 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
+
+protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *_ui;
+
+    //Menu items
+    QMenu* _file_menu;
+    QMenu* _help_menu;
+
+    QAction* _exit_menu_act;
+    QAction* _about_menu_act;
+
+    void createMenus();
+private slots:
+    void about();
 };
 #endif // MAINWINDOW_H
