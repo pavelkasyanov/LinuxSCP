@@ -1,0 +1,12 @@
+#ifndef LINUXSCP_CORE_GLOBAL_H
+#define LINUXSCP_CORE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(LINUXSCP_CORE_LIBRARY)
+#  define LINUXSCP_CORE_EXPORT Q_DECL_EXPORT
+#else
+#  define LINUXSCP_CORE_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LINUXSCP_CORE_GLOBAL_H
